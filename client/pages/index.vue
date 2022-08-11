@@ -13,10 +13,11 @@ $crumbs.set([
 ])
 
 const users = ref<models.User[]|undefined>(undefined)
-const get = async () => users.value = (await $api.index<models.User[]>('/example', { count: 9 })).data
+const get = async () => users.value = (await $api.index<models.User[]>('/example', { count: 12 })).data
 const error = async (): Promise<api.MetApiResponse> => await $api.get('/error')
 get()
 </script>
+
 
 <template>
   <div class="mx-auto container p-2 lg:p-8 flex flex-col">
@@ -28,7 +29,7 @@ get()
     </ul>
     <div class="text-center mt-4">
       <span>provided by endpoint</span><span>&nbsp;</span>
-      <a class="text-blue-400" target="_new" href="http://localhost:8000/example?count=9">/example</a>
+      <a class="text-blue-400" target="_new" href="http://localhost/example?count=9">/example</a>
       <span>&nbsp;</span>
       <span class="text-sm">(1 second delay)</span>
       <div class="mt-4 flex justify-center space-x-2">

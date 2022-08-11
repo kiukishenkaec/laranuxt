@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
 
         Schema::create('providers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained()->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->string('avatar')->nullable();
             $table->string('name');
             $table->text('payload');
@@ -42,5 +42,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('providers');
     }
 }

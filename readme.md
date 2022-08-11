@@ -94,3 +94,35 @@ const result = $api.store<models.User>('/user', { name: 'Bob', email: 'bob@mail.
 ```ts
 const result = $api.delete<models.User>('/user/1')
 ```
+
+
+# Запуск проекта 
+* Перейти в корень проекта
+```bash
+cd /var/www/html
+или
+cd /var/www/html/laranuxt
+```
+
+### Устанавливаем все зависимости
+```bash
+composer install
+```
+
+### Для удобства делаем ссылку на sail и запускаем докер
+```bash
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+sail up -d
+```
+
+### Серверный скрипт node js (adonis) 
+* Websocket соединение с api binance
+```bash
+node serverjs/ace apiBinance:miniTicker
+```
+
+### Серверный скрипт php (laravel)
+* Данные из Redis базы записавет в Postgres
+```bash
+sail artisan apiBinance:pushDdSymbols -all
+```

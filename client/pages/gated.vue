@@ -5,6 +5,7 @@ $crumbs.set([
   { name: 'Home', to: '/' },
   { name: 'Gated', to: '/gated' },
 ])
+
 </script>
 
 <template>
