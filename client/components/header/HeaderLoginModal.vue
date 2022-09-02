@@ -86,6 +86,7 @@ const router = useRouter()
 const emit = defineEmits(['off'])
 const { $toast, $api } = useNuxtApp()
 const email = ref('')
+
 const loading = reactive({
   attempt: false,
   google: false,

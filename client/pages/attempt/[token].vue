@@ -3,9 +3,12 @@
     <icon icon="eos-icons:loading" class="w-12 h-12" />
   </div>
 </template>
+
 <script lang="ts" setup>
 import { useRoute, useRouter } from 'vue-router'
 import { getCurrentInstance, onMounted } from 'vue'
+import { useNuxtApp } from '#app'
+import {Icon} from "@iconify/vue";
 
 const { $api, $utils } = useNuxtApp()
 
@@ -18,12 +21,8 @@ const verify = async () => {
   await router.push(redirect)
 }
 
-useHead({ title: 'Authenticating..' })
+// useHead({ title: 'Authenticating..' })
 
 if (getCurrentInstance()) onMounted(verify)
-</script>
-
-<script lang="ts">
-export default { layout: 'public' }
 </script>
 

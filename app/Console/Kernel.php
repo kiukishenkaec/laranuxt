@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('apiBinance:pushDdSymbols --all')->everyFiveMinutes();
         $schedule->command('model:prune')->everyFiveMinutes();
+
+
     }
 
     /**

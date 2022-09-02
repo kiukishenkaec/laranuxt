@@ -5,6 +5,7 @@ import { Router } from 'vue-router'
 
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
+import {useCookie} from "#imports";
 
 export interface UserLogin {
   token: string
@@ -28,7 +29,7 @@ export interface AuthConfig {
 
 export interface EchoConfig {
   pusherAppKey: string
-  pusheAppCluster: string
+  pusherAppCluster: string
 
 }
 
@@ -88,18 +89,24 @@ export default class Api {
     if (!process.client) return
     window.Pusher = Pusher
     this.$echo = new Echo({
-      broadcaster: 'pusher',
-      key: this.config.echoConfig.pusherAppKey,
-      cluster: this.config.echoConfig.pusheAppCluster,
-      authEndpoint: `${this.config.apiURL}/broadcasting/auth`,
-      forceTls: true,
-      encrypted: true,
-      auth: {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ` + this.token.value,
+        wsHost: 'localhost',
+        wsPort: 6001,
+        wssPort: 6001,
+        forceTLS: false,
+        disableStats: true,
+        enabledTransports: ['ws', 'wss'],
+        broadcaster: 'pusher',
+        key: this.config.echoConfig.pusherAppKey,
+        cluster: this.config.echoConfig.pusherAppCluster,
+        authEndpoint: `${this.config.apiURL}/broadcasting/auth`,
+        encrypted: true,
+        //enableLogging:true,
+        auth: {
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ` + this.token.value,
+            },
         },
-      },
     })
   }
 
@@ -246,5 +253,10 @@ export default class Api {
     else if (process.client && document.location.pathname !== this.config.redirect.logout)
       document.location.href = this.config.redirect.logout
   }
+
+  public guest () {
+      return !this.loggedIn.value
+  }
+
 
 }

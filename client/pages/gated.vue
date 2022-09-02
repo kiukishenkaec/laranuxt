@@ -1,13 +1,3 @@
-<script lang="ts" setup>
-const { $crumbs } = useNuxtApp()
-
-$crumbs.set([
-  { name: 'Home', to: '/' },
-  { name: 'Gated', to: '/gated' },
-])
-
-</script>
-
 <template>
   <div class="flex flex-col items-center justify-center">
     <span class="text-xs p-2"> $api.$user </span>
@@ -15,3 +5,21 @@ $crumbs.set([
   </div>
 </template>
 
+
+<script lang="ts" setup>
+import { useNuxtApp } from '#app'
+import { definePageMeta } from "#imports";
+definePageMeta({
+    middleware: 'auth',
+})
+
+const { $crumbs } = useNuxtApp()
+
+
+$crumbs.set([
+    { name: 'Главная', to: '/' },
+    { name: 'Закрытый', to: '/gated' },
+])
+
+
+</script>

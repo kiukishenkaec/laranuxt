@@ -16,12 +16,19 @@ export default defineNuxtPlugin(() => {
             logout: '/',
             login: '/home',
           },
-          /*
+
           echoConfig: {
+            //broadcaster: 'pusher',
+            wsHost: '127.0.0.1',
+            wsPort: 6001,
+            forceTLS: false,
+            encrypted: true,
+            disableStats: true,
+            enabledTransports: ['ws'/*, 'wss'*/],
             pusherAppKey: config.public.pusherAppKey,
             pusheAppCluster: config.public.pusherAppCluster,
           },
-          */
+
         }, $toast),
     },
   }

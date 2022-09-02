@@ -1,4 +1,4 @@
-<template>
+<template >
   <div class="mt-12">
     <h1 class="text-center mb-4"> This page is behind auth middleware </h1>
     <span>$api.$user</span>
@@ -14,5 +14,11 @@
 <script lang="ts" setup>
 import { PushButton } from 'tailvue'
 import { useNuxtApp } from '#app'
+import { definePageMeta } from "#imports";
 const { $api } = useNuxtApp()
+
+definePageMeta({
+    middleware: 'auth',
+    layout: 'dashboard',
+})
 </script>

@@ -36,8 +36,19 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
+
         Route::middleware('api')
             ->group(base_path('routes/api.php'));
+
+        Route::prefix('api/v1/admin/binance')
+            ->namespace('\\App\\Http\\Controllers\\API\\V1\\Admin\\Binance')
+            ->name('api.v1.admin.binance.')
+            ->group(base_path('routes/API/V1/Binance/admin.php'));
+
+        Route::prefix('api/v1/binance')
+            ->namespace('\\App\\Http\\Controllers\\API\\V1\\Binance')
+            ->name('api.v1.binance.')
+            ->group(base_path('routes/API/V1/Binance/public.php'));
     }
 
     /**

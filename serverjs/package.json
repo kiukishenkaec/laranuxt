@@ -22,6 +22,8 @@
     "@adonisjs/redis": "^7.3.0",
     "node-binance-api": "^0.13.1",
     "proxy-addr": "^2.0.7",
+    "pusher": "^5.1.1-beta",
+    "pusher-js": "^7.4.0",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21"
   }

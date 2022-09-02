@@ -2,6 +2,7 @@
 
 namespace App\Models\apiBinance;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 //use Illuminate\Database\Eloquent\Prunable;
@@ -29,4 +30,16 @@ class SymbolHistory extends Model
         return static::where('created_at', '<=', now()->subDay());
     }
 
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        /*static::addGlobalScope('defaultSorting', function (Builder $builder) {
+            $builder->latest();
+        });*/
+    }
 }

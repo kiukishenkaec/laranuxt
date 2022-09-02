@@ -115,6 +115,11 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 sail up -d
 ```
 
+### Создаём все таблицы в базе
+```bash
+sail artisan migrate
+```
+
 ### Серверный скрипт node js (adonis) 
 * Websocket соединение с api binance
 ```bash
@@ -125,4 +130,10 @@ node serverjs/ace apiBinance:miniTicker
 * Данные из Redis базы записавет в Postgres
 ```bash
 sail artisan apiBinance:pushDdSymbols -all
+```
+
+
+### Frontend фреймворк (nuxt v3)
+```bash
+yarn dev
 ```

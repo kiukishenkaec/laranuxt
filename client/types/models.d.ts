@@ -38,5 +38,25 @@ declare global {
 
     export type Users = Array<User>
 
+    export interface SymbolModel {
+      id: string
+      first_code: string
+      last_code: string
+      close: number
+      open: number
+      high: number
+      low: number
+      volume: number
+      quoteVolume: number
+      eventTime: number
+      is_active: boolean,
+      is_future: boolean,
+      deleted_at?: Date,
+      created_at?: Date
+      updated_at?: Date
+    }
+
+    export type SymbolsModel = Array<SymbolModel>
+
   }
 }

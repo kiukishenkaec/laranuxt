@@ -8,6 +8,7 @@ use App\Notifications\LoginAttempt;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -185,6 +186,8 @@ class AuthController extends Controller
      */
     public function login(Request $request): Response|JsonResponse
     {
+        Log::info('login', $request->all());
+
         $this
             ->option('token', 'required|alpha_num|size:64')
             ->verify();

@@ -27,11 +27,18 @@ export default class {
   public items ():MenuItem[] {
     return [
       {
-        name: 'Home',
+        name: 'Главная',
         icon: 'mdi-view-dashboard',
         to: '/',
         names: ['index'],
         gated: false,
+      },
+      {
+        name: 'Coins',
+        icon: 'mdi-view-dashboard',
+        to: '/coins',
+        names: ['coins'],
+        gated: true,
       },
       {
         name: 'Gated',
@@ -44,8 +51,8 @@ export default class {
         name: 'User Sessions',
         icon: 'mdi-devices',
         to: '/sessions',
-        gated: true,
         names: ['sessions'],
+        gated: true,
       },
     ]
   }
